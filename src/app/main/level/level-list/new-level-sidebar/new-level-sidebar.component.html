@@ -1,0 +1,77 @@
+<div class="slideout-content">
+  <!-- Modal to add new level starts-->
+  <div class="modalsd modal-slide-in sdfade new-level-modal" id="modals-slide-in">
+    <div class="modal-dialog">
+      <form class="add-new-level modal-content pt-0" (ngSubmit)="(newLevelForm.form.valid)" #newLevelForm="ngForm">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="toggleSidebar('new-level-sidebar')"
+        >
+          ×
+        </button>
+        <div class="modal-header mb-1">
+          <h5 class="modal-title" id="exampleModalLabel">New Level</h5>
+        </div>
+        <div class="modal-body flex-grow-1">
+          <div class="form-group">
+            <label class="form-label" for="basic-icon-default-description">Description</label>
+            <input
+              type="text"
+              class="form-control dt-description"
+              id="basic-icon-default-description"
+              placeholder="enter description"
+              name="description"
+              [(ngModel)]="description"
+              [class.error]="newLevelForm.submitted && DescriptionRef.invalid"
+              #DescriptionRef="ngModel"
+              required
+              aria-label="description"
+              aria-describedby="basic-icon-default-description2"
+            />
+              <span *ngIf="newLevelForm.submitted && DescriptionRef.invalid" class="invalid-form">
+                <small class="form-text text-danger">This field is required!</small>
+              </span>
+              <span *ngIf="newLevelForm.controls['description'].errors?.serverError" class="invalid-form">
+                <small class="form-text text-danger">{{ newLevelForm.controls['description'].errors.serverError }}</small>
+              </span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="basic-icon-default-point">Point</label>
+            <input
+              type="number"
+              id="basic-icon-default-point"
+              class="form-control dt-point"
+              placeholder="enter point"
+              aria-label="point"
+              aria-describedby="basic-icon-default-point2"
+              name="point"
+              [(ngModel)]="point"
+              [class.error]="newLevelForm.submitted && PointRef.invalid"
+              #PointRef="ngModel"
+              required
+            />
+            <span *ngIf="newLevelForm.submitted && PointRef.invalid" class="invalid-form">
+              <small class="form-text text-danger" *ngIf="PointRef.errors.required">This field is required!</small>
+            </span>
+            <span *ngIf="newLevelForm.controls['point'].errors?.required" class="invalid-form">
+              <small class="form-text text-danger">{{ newLevelForm.controls['point'].errors.serverError }}</small>
+            </span>
+          </div>
+          <button type="submit" class="btn btn-primary mr-1" (click)="submit(newLevelForm)" rippleEffect>Submit</button>
+          <button
+            type="reset"
+            class="btn btn-outline-secondary"
+            (click)="toggleSidebar('new-level-sidebar')"
+            rippleEffect
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Modal to add new level Ends-->
+</div>

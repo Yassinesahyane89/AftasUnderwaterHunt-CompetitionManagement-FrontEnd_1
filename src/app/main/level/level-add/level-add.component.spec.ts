@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { LevelAddComponent } from './level-add.component';
+
+describe('LevelAddComponent', () => {
+  let component: LevelAddComponent;
+  let fixture: ComponentFixture<LevelAddComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ LevelAddComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(LevelAddComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
